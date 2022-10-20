@@ -8,7 +8,11 @@ interface Props {
 const TimeEntryRow: React.FunctionComponent<Props> = ({ timeEntry }) => {
   return (
     <TableRow
-      columns={[timeEntry.projectId, timeEntry.date, timeEntry.comment]}
+      columns={[
+        timeEntry.projectId,
+        timeEntry.date,
+        timeEntry.comment.toUpperCase(),
+      ]}
     />
   );
 };
