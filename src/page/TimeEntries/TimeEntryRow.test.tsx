@@ -1,7 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import TimeEntryRow from "./TimeEntryRow";
 import TimeEntry from "../../domain/TimeEntry";
-
 const timeEntry: TimeEntry = {
   id: "dousoijdsjiodsa",
   startTime: "13:30",
@@ -23,6 +22,7 @@ describe("<TimeEntryRow />", () => {
   });
 
   test("renders the comment", () => {
+    // ARRANGE
     render(
       <table>
         <tbody>
@@ -31,7 +31,8 @@ describe("<TimeEntryRow />", () => {
       </table>
     );
 
-    screen.getByText(/anfangen react testing/i);
+    // ASSERT
+    expect(screen.queryByText(/anfangen react testing/i)).toBeInTheDOM();
   });
 
   test("renders according to full snapshot", () => {
