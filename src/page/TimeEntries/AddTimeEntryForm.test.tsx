@@ -1,7 +1,9 @@
 import AddTimeEntryForm from "./AddTimeEntryForm";
 import { render } from "../../tests/render";
-import { act, findByRole, screen } from "@testing-library/react";
+import { act, findByRole, getByText, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { server } from "../../mocks/server";
+import error from "../../mocks/api/projects/error";
 /* eslint-disable testing-library/no-unnecessary-act */
 describe("<AddTimeEntryForm />", () => {
   test("smoke detector :fire:", () => {
@@ -25,6 +27,7 @@ describe("<AddTimeEntryForm />", () => {
   });
 
   test("the button should be enabled after filling the endTime", async () => {
+    // server.resetHandlers(error);
     render(<AddTimeEntryForm />);
 
     const endTimeInput = await screen.findByRole("textbox", {
@@ -33,6 +36,7 @@ describe("<AddTimeEntryForm />", () => {
 
     await act(async () => {
       await userEvent.type(endTimeInput, "13:00");
+      // getByText("13:00");
     });
 
     const saveButton = await screen.findByRole("button", {
