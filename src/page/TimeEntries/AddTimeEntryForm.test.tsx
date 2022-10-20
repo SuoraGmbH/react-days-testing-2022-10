@@ -2,7 +2,7 @@ import AddTimeEntryForm from "./AddTimeEntryForm";
 import { render } from "../../tests/render";
 import { act, findByRole, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-
+/* eslint-disable testing-library/no-unnecessary-act */
 describe("<AddTimeEntryForm />", () => {
   test("smoke detector :fire:", () => {
     render(<AddTimeEntryForm />);
