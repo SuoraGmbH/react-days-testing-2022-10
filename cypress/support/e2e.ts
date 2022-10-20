@@ -21,6 +21,5 @@ import "./commands";
 
 import { worker } from "../../src/mocks/browser";
 Cypress.on("test:before:run:async", async () => {
-  console.log("hello cypres");
   await worker.start();
 });
