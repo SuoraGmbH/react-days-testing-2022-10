@@ -1,6 +1,7 @@
 import AddTimeEntryForm from "./AddTimeEntryForm";
 import { render } from "../../tests/render";
-import { findByRole, screen } from "@testing-library/react";
+import { act, findByRole, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 
 describe("<AddTimeEntryForm />", () => {
   test("smoke detector :fire:", () => {
@@ -21,5 +22,23 @@ describe("<AddTimeEntryForm />", () => {
     });
 
     expect(saveButton).toBeDisabled();
+  });
+
+  test("the button should be enabled after filling the endTime", async () => {
+    render(<AddTimeEntryForm />);
+
+    const endTimeInput = await screen.findByRole("textbox", {
+      name: /end time/i,
+    });
+
+    await act(async () => {
+      await userEvent.type(endTimeInput, "13:00");
+    });
+
+    const saveButton = await screen.findByRole("button", {
+      name: /save/i,
+    });
+
+    expect(saveButton).toBeEnabled();
   });
 });
