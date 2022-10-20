@@ -32,7 +32,7 @@ describe("<TimeEntryRow />", () => {
     );
 
     // ASSERT
-    expect(screen.queryByText(/anfangen react testing/i)).toBeInTheDOM();
+    expect(screen.queryByText(/anfangen react testing/i)).toBeInTheDocument();
   });
 
   test("renders according to full snapshot", () => {
